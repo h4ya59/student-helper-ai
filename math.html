@@ -48,6 +48,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       margin-bottom: 20px;
+      text-align: center;
     }
 
     input, button {
@@ -98,18 +99,19 @@
   <section>
     <div class="card">
       <h2>Ask a Math Question</h2>
-      <input type="text" id="question" placeholder="Type your math question here">
+      <input type="text" id="questionBox" placeholder="Type your math question here">
       <button onclick="answerQuestion()">Ask</button>
-      <p id="answer"></p>
+      <p id="answerBox"></p>
     </div>
   </section>
 
   <script>
     function answerQuestion() {
-      const question = document.getElementById('question').value.toLowerCase();
+      // Get the value from input
+      const question = document.getElementById('questionBox').value.toLowerCase();
       let answer = "Sorry, I don't know that yet!";
 
-      // Basic math keyword responses
+      // Keyword-based answers
       if (question.includes("algebra")) {
         answer = "Algebra tip: Isolate the variable step by step!";
       } else if (question.includes("geometry")) {
@@ -122,11 +124,13 @@
         answer = "Percentage tip: Convert to decimal or fraction first to calculate easily.";
       }
 
-      document.getElementById('answer').textContent = answer;
+      // Display answer
+      document.getElementById('answerBox').textContent = answer;
     }
   </script>
 
 </body>
 </html>
+
 
 
