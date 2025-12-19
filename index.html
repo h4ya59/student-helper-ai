@@ -2,12 +2,159 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Test Page</title>
+<title>Student Helper AI - Fun Edition</title>
+<style>
+  /* BODY & FONT */
+  body {
+    font-family: 'Comic Sans MS', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #ffe6f0, #fff0b3, #ccffcc);
+    text-align: center;
+    color: #ff0066;
+  }
+
+  /* NAVIGATION */
+  nav {
+    background-color: #ff66b3;
+    padding: 15px;
+  }
+
+  nav a {
+    color: white;
+    margin: 0 15px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* HEADER */
+  header {
+    padding: 50px 20px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff3399;
+    text-shadow: 3px 3px #ffccff;
+  }
+
+  header span {
+    animation: rainbow 5s linear infinite;
+  }
+
+  @keyframes rainbow {
+    0% { color: #ff0066; }
+    20% { color: #ff6600; }
+    40% { color: #ffcc00; }
+    60% { color: #33cc33; }
+    80% { color: #3399ff; }
+    100% { color: #cc33ff; }
+  }
+
+  /* CARDS SECTION */
+  section {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .card {
+    background: linear-gradient(145deg, #fff0f5, #ffe6f0);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(255, 102, 179, 0.4);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 102, 179, 0.6);
+  }
+
+  .card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ff3399;
+  }
+
+  .card p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .sticker {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+
+  /* FLOATING STICKERS */
+  .floating-sticker {
+    position: fixed;
+    font-size: 50px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0px); }
+  }
+
+</style>
 </head>
 <body>
-<h1>Hi! If you see this, the page works.</h1>
-<p>Links will go here later.</p>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="math.html">➕ Math</a>
+  <a href="english.html">📖 English</a>
+  <a href="science.html">🔬 Science</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <span>🎀 Welcome to Student Helper AI! ✨🌈🎉</span>
+</header>
+
+<!-- SUBJECT CARDS -->
+<section>
+  <div class="card">
+    <div class="sticker">📘</div>
+    <h2>Math</h2>
+    <p>Fun addition, subtraction, multiplication, and division help for kids!</p>
+  </div>
+
+  <div class="card">
+    <div class="sticker">📖</div>
+    <h2>English</h2>
+    <p>Learn spelling, grammar, and reading with interactive exercises! ✏️📚</p>
+  </div>
+
+  <div class="card">
+    <div class="sticker">🔬</div>
+    <h2>Science</h2>
+    <p>Discover fun experiments and easy science explanations! 🧪🌟</p>
+  </div>
+</section>
+
+<!-- FLOATING EMOJIS -->
+<div class="floating-sticker" style="top:100px; left:50px;">⭐</div>
+<div class="floating-sticker" style="top:200px; left:200px;">🌈</div>
+<div class="floating-sticker" style="top:150px; left:350px;">🎈</div>
+<div class="floating-sticker" style="top:250px; left:500px;">🦄</div>
+
 </body>
 </html>
+
 
 
