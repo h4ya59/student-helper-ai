@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Math Help</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Math Help</h1>
+  <p>Welcome! Here are some math tips.</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="english.html">English</a>
+    <a href="science.html">Science</a>
+  </nav>
+
+  <h2>Ask a Question</h2>
+  <input type="text" id="question" placeholder="Type your question">
+  <button onclick="answerQuestion()">Ask</button>
+  <p id="answer"></p>
+
+  <script>
+    function answerQuestion() {
+      const question = document.getElementById('question').value.toLowerCase();
+      let answer = "Sorry, I don't know that yet!";
+
+      if (question.includes("algebra")) {
+        answer = "Try solving equations step by step.";
+      } else if (question.includes("geometry")) {
+        answer = "Remember formulas for area and perimeter.";
+      }
+
+      document.getElementById('answer').textContent = answer;
+    }
+  </script>
+</body>
+</html>
