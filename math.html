@@ -2,166 +2,114 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Math Help - StudyCore</title>
+<title>Fun Math for Kids</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fb;
-    margin: 0;
-    color: #333;
-  }
-
-  nav {
-    background-color: #4f46e5;
-    padding: 15px;
+    font-family: Comic Sans MS, Arial, sans-serif;
+    background-color: #fff3e6;
     text-align: center;
-  }
-
-  nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  nav a:hover {
-    text-decoration: underline;
+    margin: 0;
+    padding: 0;
   }
 
   header {
-    background-color: #4f46e5;
+    background-color: #ff7f50;
     color: white;
     padding: 30px;
-    text-align: center;
+    font-size: 24px;
   }
 
   section {
-    padding: 30px;
-    max-width: 800px;
-    margin: auto;
-  }
-
-  .card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    text-align: center;
+    margin: 20px auto;
+    max-width: 600px;
   }
 
   input, button {
+    font-size: 18px;
     padding: 10px;
-    font-size: 16px;
-    margin: 5px 0;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    margin: 10px;
+    border-radius: 8px;
+    border: 2px solid #ff7f50;
   }
 
   button {
-    background-color: #4f46e5;
+    background-color: #ff7f50;
     color: white;
-    border: none;
     cursor: pointer;
   }
 
   button:hover {
-    background-color: #3730a3;
+    background-color: #ff6347;
   }
 
   #steps {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #4f46e5;
-    text-align: left;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ff4500;
   }
 </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="math.html">Math</a>
-    <a href="english.html">English</a>
-    <a href="science.html">Science</a>
-  </nav>
+<header>Fun Math for Kids! 🧮</header>
 
-  <!-- Header -->
-  <header>
-    <h1>Math Tutor</h1>
-    <p>Type your math problem below and get a step-by-step guide!</p>
-  </header>
+<section>
+  <h2>Type a simple math problem:</h2>
+  <input type="text" id="problem" placeholder="Example: 5 + 3">
+  <button onclick="solve()">Solve!</button>
 
-  <!-- Main Section -->
-  <section>
-    <div class="card">
-      <h2>Ask a Math Question</h2>
-      <input type="text" id="problem" placeholder="Example: 2x + 3 = 7 or 50% of 80">
-      <button onclick="solve()">Solve</button>
-      <div id="steps"></div>
-    </div>
-  </section>
+  <div id="steps"></div>
+</section>
 
-  <script>
-    function solve() {
-      const input = document.getElementById('problem').value.trim();
-      const stepsDiv = document.getElementById('steps');
-      stepsDiv.innerHTML = '';
+<script>
+function solve() {
+  const input = document.getElementById('problem').value.replace(/\s+/g,'');
+  const stepsDiv = document.getElementById('steps');
+  stepsDiv.innerHTML = '';
 
-      // Linear equation ax + b = c
-      const linear = input.replace(/\s+/g,'').match(/^([-+]?\d*)x([-+]\d+)?=([-+]?\d+)$/);
-      if(linear) {
-        let a = parseInt(linear[1]) || 1;
-        let b = parseInt(linear[2]) || 0;
-        let c = parseInt(linear[3]);
-        stepsDiv.innerHTML += `<p>Original equation: ${a}x + ${b} = ${c}</p>`;
-        stepsDiv.innerHTML += `<p>Step 1: Subtract ${b} from both sides: ${a}x = ${c-b}</p>`;
-        stepsDiv.innerHTML += `<p>Step 2: Divide both sides by ${a}: x = ${(c-b)/a}</p>`;
-        return;
-      }
+  // Match addition
+  const add = input.match(/^(\d+)\+(\d+)$/);
+  if(add) {
+    let a = parseInt(add[1]), b = parseInt(add[2]);
+    stepsDiv.innerHTML += `<p>${a} + ${b} = ? 🤔</p>`;
+    stepsDiv.innerHTML += `<p>Step 1: Add the numbers: ${a} + ${b} = ${a+b} 🎉</p>`;
+    return;
+  }
 
-      // Percentage calculation e.g., "50% of 80"
-      const percent = input.match(/^(\d+)%\s*of\s*(\d+)$/i);
-      if(percent) {
-        let p = parseFloat(percent[1]);
-        let n = parseFloat(percent[2]);
-        let result = (p/100)*n;
-        stepsDiv.innerHTML += `<p>Original: ${p}% of ${n}</p>`;
-        stepsDiv.innerHTML += `<p>Step 1: Convert percentage to decimal: ${p/100}</p>`;
-        stepsDiv.innerHTML += `<p>Step 2: Multiply by ${n}: ${result}</p>`;
-        stepsDiv.innerHTML += `<p>Answer: ${result}</p>`;
-        return;
-      }
+  // Match subtraction
+  const sub = input.match(/^(\d+)-(\d+)$/);
+  if(sub) {
+    let a = parseInt(sub[1]), b = parseInt(sub[2]);
+    stepsDiv.innerHTML += `<p>${a} - ${b} = ? 🤔</p>`;
+    stepsDiv.innerHTML += `<p>Step 1: Subtract: ${a} - ${b} = ${a-b} 🎉</p>`;
+    return;
+  }
 
-      // Fraction addition/subtraction e.g., "1/2 + 1/3"
-      const fraction = input.match(/^(\d+)\/(\d+)\s*([\+\-])\s*(\d+)\/(\d+)$/);
-      if(fraction) {
-        let a = parseInt(fraction[1]), b = parseInt(fraction[2]);
-        let op = fraction[3];
-        let c = parseInt(fraction[4]), d = parseInt(fraction[5]);
-        let lcm = (b*d)/gcd(b,d);
-        let step1a = a*(lcm/b);
-        let step1b = c*(lcm/d);
-        let step2 = op==='+'? step1a+step1b : step1a-step1b;
-        stepsDiv.innerHTML += `<p>Original: ${a}/${b} ${op} ${c}/${d}</p>`;
-        stepsDiv.innerHTML += `<p>Step 1: Find LCM of denominators (${b} and ${d}) = ${lcm}</p>`;
-        stepsDiv.innerHTML += `<p>Step 2: Convert fractions: ${step1a}/${lcm} ${op} ${step1b}/${lcm}</p>`;
-        stepsDiv.innerHTML += `<p>Step 3: ${step2}/${lcm} = ${step2/lcm}</p>`;
-        return;
-      }
+  // Match multiplication
+  const mul = input.match(/^(\d+)\*(\d+)$/);
+  if(mul) {
+    let a = parseInt(mul[1]), b = parseInt(mul[2]);
+    stepsDiv.innerHTML += `<p>${a} × ${b} = ? 🤔</p>`;
+    stepsDiv.innerHTML += `<p>Step 1: Multiply: ${a} × ${b} = ${a*b} 🎉</p>`;
+    return;
+  }
 
-      stepsDiv.innerHTML = '<p>Sorry, I can only solve simple linear equations, basic percentages, or fraction problems for now.</p>';
-    }
+  // Match division
+  const div = input.match(/^(\d+)\/(\d+)$/);
+  if(div) {
+    let a = parseInt(div[1]), b = parseInt(div[2]);
+    stepsDiv.innerHTML += `<p>${a} ÷ ${b} = ? 🤔</p>`;
+    stepsDiv.innerHTML += `<p>Step 1: Divide: ${a} ÷ ${b} = ${a/b} 🎉</p>`;
+    return;
+  }
 
-    // Helper to calculate gcd
-    function gcd(a,b){ return b===0?a:gcd(b,a%b);}
-  </script>
+  stepsDiv.innerHTML = `<p>Oops! Please type a simple addition, subtraction, multiplication, or division problem. 😊</p>`;
+}
+</script>
 
 </body>
 </html>
+
 
 
 
