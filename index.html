@@ -2,32 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Student Helper AI - Animated Fun</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+<title>Student Helper AI - Bubbly Cute Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <style>
 /* BODY & FONT */
 body {
-  font-family: 'Baloo 2', cursive;
+  font-family: 'Pacifico', cursive;
   margin: 0;
   padding: 0;
-  background: linear-gradient(120deg, #ffe6f0, #fff0b3, #ccffcc);
-  text-align: center;
-  color: #ff0066;
+  background: linear-gradient(135deg, #ffe6f0, #fff0b3, #ccffcc);
   overflow-x: hidden;
+  color: #ff3399;
+  text-align: center;
 }
 
 /* NAVIGATION */
 nav {
-  background-color: #ff66b3;
+  background-color: #ff99cc;
   padding: 15px;
+  border-bottom: 3px solid #ff66b3;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 nav a {
   color: white;
-  margin: 0 15px;
+  margin: 0 20px;
   font-weight: bold;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 nav a:hover {
@@ -37,98 +39,71 @@ nav a:hover {
 /* HEADER */
 header {
   padding: 50px 20px;
-  font-size: 38px;
-  font-weight: bold;
-  color: #ff3399;
-  text-shadow: 3px 3px #ffccff;
+  font-size: 42px;
+  text-shadow: 2px 2px #ffccff;
 }
 
-header span {
-  animation: rainbow 5s linear infinite;
-}
-
-@keyframes rainbow {
-  0% { color: #ff0066; }
-  20% { color: #ff6600; }
-  40% { color: #ffcc00; }
-  60% { color: #33cc33; }
-  80% { color: #3399ff; }
-  100% { color: #cc33ff; }
-}
-
-/* CARDS SECTION */
+/* SUBJECT CARDS */
 section {
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .card {
-  background: linear-gradient(145deg, #fff0f5, #ffe6f0);
+  background: #fff0f5;
+  border-radius: 30px;
+  width: 260px;
   padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(255, 102, 179, 0.4);
-  width: 250px;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(255,102,179,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(255, 102, 179, 0.6);
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(255,102,179,0.5);
 }
 
 .card h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 26px;
+  margin-bottom: 15px;
   color: #ff3399;
 }
 
 .card p {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* ANIMATED STICKERS */
-.animated-sticker {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-/* FLOATING ELEMENTS */
-.floating {
+/* CLOUDS */
+.cloud {
   position: fixed;
-  font-size: 50px;
-  animation: float 6s ease-in-out infinite;
+  background: #fff;
+  border-radius: 50% 50% 60% 60%;
+  opacity: 0.85;
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-30px); }
-  100% { transform: translateY(0px); }
+.cloud1 { width: 150px; height: 80px; top: 50px; left: 10%; animation: cloudMove 70s linear infinite; }
+.cloud2 { width: 200px; height: 100px; top: 120px; left: 50%; animation: cloudMove 90s linear infinite; }
+.cloud3 { width: 130px; height: 70px; top: 250px; left: 80%; animation: cloudMove 80s linear infinite; }
+
+@keyframes cloudMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-1300px); }
 }
 
 /* CONFETTI */
 .confetti {
   position: fixed;
-  width: 10px;
-  height: 10px;
-  top: 0;
-  animation: fall 5s linear infinite;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  top: 0;
+  opacity: 0.9;
 }
 
 @keyframes fall {
@@ -136,27 +111,27 @@ section {
   100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
-/* CLOUDS */
-.cloud {
+/* FLOATING BUBBLES */
+.bubble {
   position: fixed;
-  background: #fff;
+  width: 40px;
+  height: 40px;
+  background: #ffccff;
   border-radius: 50%;
-  opacity: 0.8;
+  opacity: 0.6;
+  animation: floatBubble 8s ease-in-out infinite;
 }
 
-.cloud1 { width: 120px; height: 60px; top: 50px; left: 10%; animation: cloudMove 60s linear infinite; }
-.cloud2 { width: 150px; height: 70px; top: 120px; left: 50%; animation: cloudMove 80s linear infinite; }
-.cloud3 { width: 100px; height: 50px; top: 200px; left: 80%; animation: cloudMove 70s linear infinite; }
-
-@keyframes cloudMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-1200px); }
+@keyframes floatBubble {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-50px); }
+  100% { transform: translateY(0); }
 }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav>
   <a href="index.html">🏠 Home</a>
   <a href="math.html">➕ Math</a>
@@ -165,57 +140,58 @@ section {
 </nav>
 
 <!-- HEADER -->
-<header>
-  <span>🎀 Welcome to Student Helper AI! ✨🌈🎉</span>
-</header>
+<header>🎀 Welcome to Student Helper AI! 🌸✨</header>
 
 <!-- SUBJECT CARDS -->
 <section>
   <div class="card">
-    <img class="animated-sticker" src="https://i.imgur.com/4AiXzf8.png" alt="Math Sticker">
     <h2>Math</h2>
-    <p>Fun addition, subtraction, multiplication, and division help for kids!</p>
+    <p>Fun addition, subtraction, multiplication, and division for little learners!</p>
   </div>
-
   <div class="card">
-    <img class="animated-sticker" src="https://i.imgur.com/1RzZrCc.png" alt="English Sticker">
     <h2>English</h2>
-    <p>Learn spelling, grammar, and reading with interactive exercises! ✏️📚</p>
+    <p>Learn spelling, reading, and grammar with cute exercises!</p>
   </div>
-
   <div class="card">
-    <img class="animated-sticker" src="https://i.imgur.com/KVHeFpp.png" alt="Science Sticker">
     <h2>Science</h2>
-    <p>Discover fun experiments and easy science explanations! 🧪🌟</p>
+    <p>Discover experiments, fun facts, and cool science activities!</p>
   </div>
 </section>
-
-<!-- FLOATING EMOJIS -->
-<div class="floating" style="top:100px; left:50px;">⭐</div>
-<div class="floating" style="top:200px; left:200px;">🌈</div>
-<div class="floating" style="top:150px; left:350px;">🎈</div>
-<div class="floating" style="top:250px; left:500px;">🦄</div>
-
-<!-- CONFETTI -->
-<script>
-for (let i = 0; i < 50; i++) {
-  const confetti = document.createElement('div');
-  confetti.classList.add('confetti');
-  confetti.style.left = Math.random() * window.innerWidth + 'px';
-  confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 75%)`;
-  confetti.style.width = 5 + Math.random()*10 + 'px';
-  confetti.style.height = confetti.style.width;
-  document.body.appendChild(confetti);
-}
-</script>
 
 <!-- CLOUDS -->
 <div class="cloud cloud1"></div>
 <div class="cloud cloud2"></div>
 <div class="cloud cloud3"></div>
 
+<!-- FLOATING BUBBLES -->
+<div class="bubble" style="top:300px; left:100px;"></div>
+<div class="bubble" style="top:400px; left:500px;"></div>
+<div class="bubble" style="top:200px; left:700px;"></div>
+<div class="bubble" style="top:350px; left:300px;"></div>
+
+<!-- CONFETTI SCRIPT -->
+<script>
+function createConfetti() {
+  const confetti = document.createElement('div');
+  confetti.classList.add('confetti');
+  confetti.style.left = Math.random() * window.innerWidth + 'px';
+  confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 75%)`;
+  confetti.style.width = 5 + Math.random()*8 + 'px';
+  confetti.style.height = confetti.style.width;
+  confetti.style.animation = `fall ${3 + Math.random()*4}s linear forwards`;
+  document.body.appendChild(confetti);
+  setTimeout(() => confetti.remove(), 7000);
+}
+
+// Random intervals for confetti
+setInterval(createConfetti, 300);
+setInterval(createConfetti, 600);
+setInterval(createConfetti, 900);
+</script>
+
 </body>
 </html>
+
 
 
 
