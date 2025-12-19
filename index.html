@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Student Helper AI - Bubbly Cute Edition</title>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<title>Student Helper AI - Primary School Fun</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
 <style>
 /* BODY & FONT */
 body {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Baloo 2', cursive;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #ffe6f0, #fff0b3, #ccffcc);
+  background: linear-gradient(135deg, #ffedf0, #fff7cc, #ccffe6);
   overflow-x: hidden;
   color: #ff3399;
   text-align: center;
+  position: relative;
 }
 
 /* NAVIGATION */
@@ -25,7 +26,7 @@ nav {
 }
 
 nav a {
-  color: white;
+  color: #fff;
   margin: 0 20px;
   font-weight: bold;
   text-decoration: none;
@@ -41,7 +42,20 @@ header {
   padding: 50px 20px;
   font-size: 42px;
   text-shadow: 2px 2px #ffccff;
+  color: #ff3399;
 }
+
+/* BUBBLY BACKGROUND SHAPES */
+.bubble-bg {
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.bubble-bg1 { width: 200px; height: 200px; background: #ffccff; top: 50px; left: 10%; }
+.bubble-bg2 { width: 150px; height: 150px; background: #ffff99; top: 200px; left: 70%; }
+.bubble-bg3 { width: 180px; height: 180px; background: #ccffcc; top: 400px; left: 30%; }
 
 /* SUBJECT CARDS */
 section {
@@ -61,6 +75,7 @@ section {
   padding: 25px;
   box-shadow: 0 8px 25px rgba(255,102,179,0.3);
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
 }
 
 .card:hover {
@@ -68,15 +83,8 @@ section {
   box-shadow: 0 12px 30px rgba(255,102,179,0.5);
 }
 
-.card h2 {
-  font-size: 26px;
-  margin-bottom: 15px;
+.card h2, .card p {
   color: #ff3399;
-}
-
-.card p {
-  font-size: 16px;
-  line-height: 1.6;
 }
 
 /* CLOUDS */
@@ -131,6 +139,11 @@ section {
 </head>
 <body>
 
+<!-- BACKGROUND BUBBLES -->
+<div class="bubble-bg bubble-bg1"></div>
+<div class="bubble-bg bubble-bg2"></div>
+<div class="bubble-bg bubble-bg3"></div>
+
 <!-- NAV -->
 <nav>
   <a href="index.html">🏠 Home</a>
@@ -183,7 +196,7 @@ function createConfetti() {
   setTimeout(() => confetti.remove(), 7000);
 }
 
-// Random intervals for confetti
+// Confetti at random intervals
 setInterval(createConfetti, 300);
 setInterval(createConfetti, 600);
 setInterval(createConfetti, 900);
@@ -191,8 +204,6 @@ setInterval(createConfetti, 900);
 
 </body>
 </html>
-
-
 
 
 
