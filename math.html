@@ -2,47 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Math Help</title>
+<title>Math Help - StudyCore</title>
 <style>
-body { font-family: Arial; padding: 20px; }
-input, button { padding: 10px; font-size: 16px; margin: 5px 0; }
-#steps { margin-top: 15px; color: #4f46e5; }
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    color: #333;
+  }
+
+  nav {
+    background-color: #4f46e5;
+    padding: 15px;
+    text-align: center;
+  }
+
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  header {
+    background-color: #4f46e5;
+    color: white;
+    padding: 30px;
+    text-align: center;
+  }
+
+  section {
+    padding: 30px;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  input, button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px 0;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #3730a3;
+  }
+
+  #steps {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #4f46e5;
+    text-align: left;
+  }
 </style>
 </head>
 <body>
 
-<h1>Math Tutor</h1>
-<p>Type a simple linear equation like <b>2x + 3 = 7</b></p>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="math.html">Math</a>
+    <a href="english.html">English</a>
+    <a href="science.html">Science</a>
+  </nav>
 
-<input type="text" id="problem" placeholder="Type your problem">
-<button onclick="solve()">Solve</button>
+  <!-- Header -->
+  <header>
+    <h1>Math Tutor</h1>
+    <p>Type a simple linear equation to get a step-by-step guide!</p>
+  </header>
 
-<div id="steps"></div>
+  <!-- Main Section -->
+  <section>
+    <div class="card">
+      <h2>Ask a Math Question</h2>
+      <input type="text" id="problem" placeholder="Example: 2x + 3 = 7">
+      <button onclick="solve()">Solve</button>
+      <div id="steps"></div>
+    </div>
+  </section>
 
-<script>
-function solve() {
-  const input = document.getElementById('problem').value.replace(/\s+/g,'');
-  const stepsDiv = document.getElementById('steps');
-  stepsDiv.innerHTML = '';
+  <script>
+    function solve() {
+      const input = document.getElementById('problem').value.replace(/\s+/g,'');
+      const stepsDiv = document.getElementById('steps');
+      stepsDiv.innerHTML = '';
 
-  // Match simple linear equations ax + b = c
-  const match = input.match(/^([-+]?\d*)x([-+]\d+)?=([-+]?\d+)$/);
-  if(match) {
-    let a = parseInt(match[1]) || 1;
-    let b = parseInt(match[2]) || 0;
-    let c = parseInt(match[3]);
+      // Match simple linear equations: ax + b = c
+      const match = input.match(/^([-+]?\d*)x([-+]\d+)?=([-+]?\d+)$/);
+      if(match) {
+        let a = parseInt(match[1]) || 1;
+        let b = parseInt(match[2]) || 0;
+        let c = parseInt(match[3]);
 
-    stepsDiv.innerHTML += `<p>Original equation: ${a}x + ${b} = ${c}</p>`;
-    stepsDiv.innerHTML += `<p>Step 1: Subtract ${b} from both sides: ${a}x = ${c-b}</p>`;
-    stepsDiv.innerHTML += `<p>Step 2: Divide both sides by ${a}: x = ${(c-b)/a}</p>`;
-  } else {
-    stepsDiv.innerHTML = '<p>Sorry, I can only solve simple linear equations like 2x + 3 = 7</p>';
-  }
-}
-</script>
+        stepsDiv.innerHTML += `<p>Original equation: ${a}x + ${b} = ${c}</p>`;
+        stepsDiv.innerHTML += `<p>Step 1: Subtract ${b} from both sides: ${a}x = ${c-b}</p>`;
+        stepsDiv.innerHTML += `<p>Step 2: Divide both sides by ${a}: x = ${(c-b)/a}</p>`;
+      } else {
+        stepsDiv.innerHTML = '<p>Sorry, I can only solve simple linear equations like 2x + 3 = 7</p>';
+      }
+    }
+  </script>
 
 </body>
 </html>
+
 
 
 
