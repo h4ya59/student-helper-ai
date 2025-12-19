@@ -2,113 +2,156 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Student Helper AI - Fun Edition</title>
+<title>Student Helper AI - Animated Fun</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
 <style>
-  /* BODY & FONT */
-  body {
-    font-family: 'Comic Sans MS', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(120deg, #ffe6f0, #fff0b3, #ccffcc);
-    text-align: center;
-    color: #ff0066;
-  }
+/* BODY & FONT */
+body {
+  font-family: 'Baloo 2', cursive;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg, #ffe6f0, #fff0b3, #ccffcc);
+  text-align: center;
+  color: #ff0066;
+  overflow-x: hidden;
+}
 
-  /* NAVIGATION */
-  nav {
-    background-color: #ff66b3;
-    padding: 15px;
-  }
+/* NAVIGATION */
+nav {
+  background-color: #ff66b3;
+  padding: 15px;
+}
 
-  nav a {
-    color: white;
-    margin: 0 15px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 18px;
-  }
+nav a {
+  color: white;
+  margin: 0 15px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+}
 
-  nav a:hover {
-    text-decoration: underline;
-  }
+nav a:hover {
+  text-decoration: underline;
+}
 
-  /* HEADER */
-  header {
-    padding: 50px 20px;
-    font-size: 36px;
-    font-weight: bold;
-    color: #ff3399;
-    text-shadow: 3px 3px #ffccff;
-  }
+/* HEADER */
+header {
+  padding: 50px 20px;
+  font-size: 38px;
+  font-weight: bold;
+  color: #ff3399;
+  text-shadow: 3px 3px #ffccff;
+}
 
-  header span {
-    animation: rainbow 5s linear infinite;
-  }
+header span {
+  animation: rainbow 5s linear infinite;
+}
 
-  @keyframes rainbow {
-    0% { color: #ff0066; }
-    20% { color: #ff6600; }
-    40% { color: #ffcc00; }
-    60% { color: #33cc33; }
-    80% { color: #3399ff; }
-    100% { color: #cc33ff; }
-  }
+@keyframes rainbow {
+  0% { color: #ff0066; }
+  20% { color: #ff6600; }
+  40% { color: #ffcc00; }
+  60% { color: #33cc33; }
+  80% { color: #3399ff; }
+  100% { color: #cc33ff; }
+}
 
-  /* CARDS SECTION */
-  section {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-  }
+/* CARDS SECTION */
+section {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
 
-  .card {
-    background: linear-gradient(145deg, #fff0f5, #ffe6f0);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(255, 102, 179, 0.4);
-    width: 250px;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+.card {
+  background: linear-gradient(145deg, #fff0f5, #ffe6f0);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(255, 102, 179, 0.4);
+  width: 250px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
 
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(255, 102, 179, 0.6);
-  }
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 102, 179, 0.6);
+}
 
-  .card h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #ff3399;
-  }
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #ff3399;
+}
 
-  .card p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
+.card p {
+  font-size: 16px;
+  line-height: 1.5;
+}
 
-  .sticker {
-    font-size: 50px;
-    margin-bottom: 10px;
-  }
+/* ANIMATED STICKERS */
+.animated-sticker {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  animation: bounce 2s infinite;
+}
 
-  /* FLOATING STICKERS */
-  .floating-sticker {
-    position: fixed;
-    font-size: 50px;
-    animation: float 6s ease-in-out infinite;
-  }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
 
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-30px); }
-    100% { transform: translateY(0px); }
-  }
+/* FLOATING ELEMENTS */
+.floating {
+  position: fixed;
+  font-size: 50px;
+  animation: float 6s ease-in-out infinite;
+}
 
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-30px); }
+  100% { transform: translateY(0px); }
+}
+
+/* CONFETTI */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: 0;
+  animation: fall 5s linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* CLOUDS */
+.cloud {
+  position: fixed;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.cloud1 { width: 120px; height: 60px; top: 50px; left: 10%; animation: cloudMove 60s linear infinite; }
+.cloud2 { width: 150px; height: 70px; top: 120px; left: 50%; animation: cloudMove 80s linear infinite; }
+.cloud3 { width: 100px; height: 50px; top: 200px; left: 80%; animation: cloudMove 70s linear infinite; }
+
+@keyframes cloudMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-1200px); }
+}
 </style>
 </head>
 <body>
@@ -129,32 +172,51 @@
 <!-- SUBJECT CARDS -->
 <section>
   <div class="card">
-    <div class="sticker">📘</div>
+    <img class="animated-sticker" src="https://i.imgur.com/4AiXzf8.png" alt="Math Sticker">
     <h2>Math</h2>
     <p>Fun addition, subtraction, multiplication, and division help for kids!</p>
   </div>
 
   <div class="card">
-    <div class="sticker">📖</div>
+    <img class="animated-sticker" src="https://i.imgur.com/1RzZrCc.png" alt="English Sticker">
     <h2>English</h2>
     <p>Learn spelling, grammar, and reading with interactive exercises! ✏️📚</p>
   </div>
 
   <div class="card">
-    <div class="sticker">🔬</div>
+    <img class="animated-sticker" src="https://i.imgur.com/KVHeFpp.png" alt="Science Sticker">
     <h2>Science</h2>
     <p>Discover fun experiments and easy science explanations! 🧪🌟</p>
   </div>
 </section>
 
 <!-- FLOATING EMOJIS -->
-<div class="floating-sticker" style="top:100px; left:50px;">⭐</div>
-<div class="floating-sticker" style="top:200px; left:200px;">🌈</div>
-<div class="floating-sticker" style="top:150px; left:350px;">🎈</div>
-<div class="floating-sticker" style="top:250px; left:500px;">🦄</div>
+<div class="floating" style="top:100px; left:50px;">⭐</div>
+<div class="floating" style="top:200px; left:200px;">🌈</div>
+<div class="floating" style="top:150px; left:350px;">🎈</div>
+<div class="floating" style="top:250px; left:500px;">🦄</div>
+
+<!-- CONFETTI -->
+<script>
+for (let i = 0; i < 50; i++) {
+  const confetti = document.createElement('div');
+  confetti.classList.add('confetti');
+  confetti.style.left = Math.random() * window.innerWidth + 'px';
+  confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 75%)`;
+  confetti.style.width = 5 + Math.random()*10 + 'px';
+  confetti.style.height = confetti.style.width;
+  document.body.appendChild(confetti);
+}
+</script>
+
+<!-- CLOUDS -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
 
 </body>
 </html>
+
 
 
 
