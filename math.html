@@ -1,136 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Math Help - StudyCore</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f7fb;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav {
-      background-color: #4f46e5;
-      padding: 15px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    header {
-      background-color: #4f46e5;
-      color: white;
-      padding: 30px;
-      text-align: center;
-    }
-
-    section {
-      padding: 30px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    input, button {
-      padding: 10px;
-      margin: 5px 0;
-      font-size: 16px;
-      width: 80%;
-      max-width: 400px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background-color: #4f46e5;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #3730a3;
-    }
-
-    #answer {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #4f46e5;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Math Help</title>
+<style>
+  body { font-family: Arial; padding: 20px; }
+  input, button { padding: 10px; font-size: 16px; }
+  #steps { margin-top: 15px; color: #4f46e5; }
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="math.html">Math</a>
-    <a href="english.html">English</a>
-    <a href="science.html">Science</a>
-  </nav>
+<h1>Math Tutor</h1>
+<p>Type a simple algebra problem like <b>2x + 3 = 7</b></p>
 
-  <!-- Header -->
-  <header>
-    <h1>Math Help</h1>
-    <p>Ask a question about Math and get instant guidance!</p>
-  </header>
+<input type="text" id="problem" placeholder="Type your problem">
+<button onclick="solve()">Solve</button>
 
-  <!-- Main Content -->
-  <section>
-    <div class="card">
-      <h2>Ask a Math Question</h2>
-      <input type="text" id="questionBox" placeholder="Type your math question here">
-      <button onclick="answerQuestion()">Ask</button>
-      <p id="answerBox"></p>
-    </div>
-  </section>
+<div id="steps"></div>
 
-  <script>
-    function answerQuestion() {
-      // Get the value from input
-      const question = document.getElementById('questionBox').value.toLowerCase();
-      let answer = "Sorry, I don't know that yet!";
+<script>
+function solve() {
+  const input = document.getElementById('problem').value.replace(/\s+/g,'');
+  const stepsDiv = document.getElementById('steps');
+  stepsDiv.innerHTML = '';
 
-      // Keyword-based answers
-      if (question.includes("algebra")) {
-        answer = "Algebra tip: Isolate the variable step by step!";
-      } else if (question.includes("geometry")) {
-        answer = "Geometry tip: Remember formulas for area, perimeter, and angles.";
-      } else if (question.includes("fraction")) {
-        answer = "Fractions tip: Make sure denominators are the same before adding/subtracting.";
-      } else if (question.includes("equation")) {
-        answer = "Equations tip: Try moving all terms to one side and simplifying.";
-      } else if (question.includes("percentage")) {
-        answer = "Percentage tip: Convert to decimal or fraction first to calculate easily.";
-      }
+  // Basic linear equation of form ax + b = c
+  const match = input.match(/^([-+]?\d*)x([-+]\d+)?=([-+]?\d+)$/);
+  if(match) {
+    let a = parseInt(match[1]) || 1;
+    let b = parseInt(match[2]) || 0;
+    let c = parseInt(match[3]);
 
-      // Display answer
-      document.getElementById('answerBox').textContent = answer;
-    }
-  </script>
+    stepsDiv.innerHTML += `<p>Original equation: ${a}x + ${b} = ${c}</p>`;
+    stepsDiv.innerHTML += `<p>Step 1: Subtract ${b} from both sides: ${a}x = ${c-b}</p>`;
+    stepsDiv.innerHTML += `<p>Step 2: Divide both sides by ${a}: x = ${(c-b)/a}</p>`;
+  } else {
+    stepsDiv.innerHTML = '<p>Sorry, I can only solve simple linear equations like 2x + 3 = 7</p>';
+  }
+}
+</script>
 
 </body>
 </html>
+
 
 
 
