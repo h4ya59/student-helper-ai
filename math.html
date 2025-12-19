@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <title>Math Help</title>
 <style>
-  body { font-family: Arial; padding: 20px; }
-  input, button { padding: 10px; font-size: 16px; }
-  #steps { margin-top: 15px; color: #4f46e5; }
+body { font-family: Arial; padding: 20px; }
+input, button { padding: 10px; font-size: 16px; margin: 5px 0; }
+#steps { margin-top: 15px; color: #4f46e5; }
 </style>
 </head>
 <body>
 
 <h1>Math Tutor</h1>
-<p>Type a simple algebra problem like <b>2x + 3 = 7</b></p>
+<p>Type a simple linear equation like <b>2x + 3 = 7</b></p>
 
 <input type="text" id="problem" placeholder="Type your problem">
 <button onclick="solve()">Solve</button>
@@ -25,7 +25,7 @@ function solve() {
   const stepsDiv = document.getElementById('steps');
   stepsDiv.innerHTML = '';
 
-  // Basic linear equation of form ax + b = c
+  // Match simple linear equations ax + b = c
   const match = input.match(/^([-+]?\d*)x([-+]\d+)?=([-+]?\d+)$/);
   if(match) {
     let a = parseInt(match[1]) || 1;
@@ -43,6 +43,7 @@ function solve() {
 
 </body>
 </html>
+
 
 
 
