@@ -92,14 +92,14 @@
   <!-- Header -->
   <header>
     <h1>Math Tutor</h1>
-    <p>Type a simple linear equation to get a step-by-step guide!</p>
+    <p>Type your math problem below and get a step-by-step guide!</p>
   </header>
 
   <!-- Main Section -->
   <section>
     <div class="card">
       <h2>Ask a Math Question</h2>
-      <input type="text" id="problem" placeholder="Example: 2x + 3 = 7">
+      <input type="text" id="problem" placeholder="Example: 2x + 3 = 7 or 50% of 80">
       <button onclick="solve()">Solve</button>
       <div id="steps"></div>
     </div>
@@ -107,28 +107,62 @@
 
   <script>
     function solve() {
-      const input = document.getElementById('problem').value.replace(/\s+/g,'');
+      const input = document.getElementById('problem').value.trim();
       const stepsDiv = document.getElementById('steps');
       stepsDiv.innerHTML = '';
 
-      // Match simple linear equations: ax + b = c
-      const match = input.match(/^([-+]?\d*)x([-+]\d+)?=([-+]?\d+)$/);
-      if(match) {
-        let a = parseInt(match[1]) || 1;
-        let b = parseInt(match[2]) || 0;
-        let c = parseInt(match[3]);
-
+      // Linear equation ax + b = c
+      const linear = input.replace(/\s+/g,'').match(/^([-+]?\d*)x([-+]\d+)?=([-+]?\d+)$/);
+      if(linear) {
+        let a = parseInt(linear[1]) || 1;
+        let b = parseInt(linear[2]) || 0;
+        let c = parseInt(linear[3]);
         stepsDiv.innerHTML += `<p>Original equation: ${a}x + ${b} = ${c}</p>`;
         stepsDiv.innerHTML += `<p>Step 1: Subtract ${b} from both sides: ${a}x = ${c-b}</p>`;
         stepsDiv.innerHTML += `<p>Step 2: Divide both sides by ${a}: x = ${(c-b)/a}</p>`;
-      } else {
-        stepsDiv.innerHTML = '<p>Sorry, I can only solve simple linear equations like 2x + 3 = 7</p>';
+        return;
       }
+
+      // Percentage calculation e.g., "50% of 80"
+      const percent = input.match(/^(\d+)%\s*of\s*(\d+)$/i);
+      if(percent) {
+        let p = parseFloat(percent[1]);
+        let n = parseFloat(percent[2]);
+        let result = (p/100)*n;
+        stepsDiv.innerHTML += `<p>Original: ${p}% of ${n}</p>`;
+        stepsDiv.innerHTML += `<p>Step 1: Convert percentage to decimal: ${p/100}</p>`;
+        stepsDiv.innerHTML += `<p>Step 2: Multiply by ${n}: ${result}</p>`;
+        stepsDiv.innerHTML += `<p>Answer: ${result}</p>`;
+        return;
+      }
+
+      // Fraction addition/subtraction e.g., "1/2 + 1/3"
+      const fraction = input.match(/^(\d+)\/(\d+)\s*([\+\-])\s*(\d+)\/(\d+)$/);
+      if(fraction) {
+        let a = parseInt(fraction[1]), b = parseInt(fraction[2]);
+        let op = fraction[3];
+        let c = parseInt(fraction[4]), d = parseInt(fraction[5]);
+        let lcm = (b*d)/gcd(b,d);
+        let step1a = a*(lcm/b);
+        let step1b = c*(lcm/d);
+        let step2 = op==='+'? step1a+step1b : step1a-step1b;
+        stepsDiv.innerHTML += `<p>Original: ${a}/${b} ${op} ${c}/${d}</p>`;
+        stepsDiv.innerHTML += `<p>Step 1: Find LCM of denominators (${b} and ${d}) = ${lcm}</p>`;
+        stepsDiv.innerHTML += `<p>Step 2: Convert fractions: ${step1a}/${lcm} ${op} ${step1b}/${lcm}</p>`;
+        stepsDiv.innerHTML += `<p>Step 3: ${step2}/${lcm} = ${step2/lcm}</p>`;
+        return;
+      }
+
+      stepsDiv.innerHTML = '<p>Sorry, I can only solve simple linear equations, basic percentages, or fraction problems for now.</p>';
     }
+
+    // Helper to calculate gcd
+    function gcd(a,b){ return b===0?a:gcd(b,a%b);}
   </script>
 
 </body>
 </html>
+
 
 
 
